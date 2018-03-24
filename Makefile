@@ -275,6 +275,7 @@ ifeq ($(OSX), 1)
 		CUDA_VERSION := $(shell $(CUDA_DIR)/bin/nvcc -V | grep -o 'release [0-9.]*' | tr -d '[a-z ]')
 		ifeq ($(shell echo | awk '{exit $(CUDA_VERSION) < 7.0;}'), 1)
 			CXXFLAGS += -stdlib=libstdc++
+			CXXFLAGS += -std=c++11
 			LINKFLAGS += -stdlib=libstdc++
 		endif
 		# clang throws this warning for cuda headers
@@ -405,7 +406,7 @@ CXXFLAGS += -MMD -MP
 
 # Complete build flags.
 COMMON_FLAGS += $(foreach includedir,$(INCLUDE_DIRS),-isystem $(includedir))
-CXXFLAGS += --std=c++11 -pthread -fPIC $(COMMON_FLAGS) $(WARNINGS)
+CXXFLAGS += -std=c++11 -pthread -fPIC $(COMMON_FLAGS) $(WARNINGS)
 NVCCFLAGS += -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)
 # mex may invoke an older gcc that is too liberal with -Wuninitalized
 MATLAB_CXXFLAGS := $(CXXFLAGS) -Wno-uninitialized
