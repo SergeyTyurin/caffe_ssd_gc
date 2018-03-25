@@ -8,6 +8,7 @@ endif()
 
 # ---[ Caffe project
 project(Caffe C CXX)
+add_compile_options(-std=c++11)
 set(CMAKE_C_COMPILER /usr/bin/gcc-5 CACHE PATH "" FORCE)
 set(CMAKE_CXX_COMPILER /usr/bin/g++-5 CACHE PATH "" FORCE)
 
