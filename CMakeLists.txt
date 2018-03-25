@@ -8,6 +8,8 @@ endif()
 
 # ---[ Caffe project
 project(Caffe C CXX)
+set(CMAKE_C_COMPILER /usr/bin/gcc-5 CACHE PATH "" FORCE)
+set(CMAKE_CXX_COMPILER /usr/bin/g++-5 CACHE PATH "" FORCE)
 
 # ---[ Caffe version
 set(CAFFE_TARGET_VERSION "1.0.0-rc3" CACHE STRING "Caffe logical version")
